@@ -16,13 +16,9 @@ class_name = 'SDL'
 workspace_name = 'SDL'
 namespace = 'SDL'
 
-# g = Generator('third-party/test/test.h', 'third-party/test/test.c', 'Test', 'Test')
 generator = Generator('third-party/SDL/include/SDL.h', 'third-party/SDL/src/SDL.c')
-# g = Generator('third-party/cglm/include/cglm/mat4.h', 'third-party/cglm/src/mat4.c', 'GLM', 'Mat4')
-# g = Generator('third-party/genann/genann.h', 'third-party/genann/genann.c', 'GenANN', 'GenANN')
-# g = Generator('third-party/sqlite3/sqlite3.h', 'third-party/sqlite3/sqlite3.c')
+
 module = generator.generate()
-# e = Emitter(module, 'SQLite', 'SQLite')
 
 emitter_options = EmitterOptions(
     function_name  = lambda x: x.removeprefix('SDL_'),
@@ -32,8 +28,5 @@ emitter_options = EmitterOptions(
 emitter = Emitter(module, class_name, namespace, emitter_options)
 source = emitter.emit()
 
-writer = Writer('SDL')
+writer = Writer(workspace_name)
 writer.write_class('SDL', source)
-
-# FIXME: Move elsewhere
-
