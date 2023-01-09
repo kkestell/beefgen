@@ -179,6 +179,7 @@ class Generator(object):
             int_literal = const_expr['inner'][0]
             if int_literal['kind'] != 'IntegerLiteral':
                 print(f"warning: skipping {int_literal['kind']} in enum constant expression")
+                return '???'
             else:
                 return int_literal['value']
     
