@@ -157,6 +157,6 @@ class TypeParser:
             tree = self.type_parser.parse(type)
             return str(self.transformer.transform(tree))
         except UnexpectedInput as u:
-            print(f"warning: unable to parse type `{type}`")
-            print(u)
+            # print(f"warning: unable to parse type `{type}`")
+            # print(u)
             return None

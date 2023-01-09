@@ -24,10 +24,14 @@ class Emitter(object):
         s += '\t{\n'
 
         for d in self.module.enums.values():
+            if not d.name:
+                continue
             enum_name = self.options.enum_name(d.name)
             s += f"\t\tenum {enum_name}\n"
             s += '\t\t{\n'
             for c in d.constants:
+                if c.comment:
+                    s += f"\t\t\t// {c.comment}\n"
                 if c.value:
                     s += f"\t\t\t{c.name} = {c.value},\n"
                 else:
@@ -35,6 +39,8 @@ class Emitter(object):
             s += '\t\t}\n\n'
 
         for d in self.module.structs.values():
+            if not d.name:
+                continue
             s += f"\t\t[CRepr]\n"
             s += f"\t\tstruct {d.name}\n"
             s += '\t\t{\n'

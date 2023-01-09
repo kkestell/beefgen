@@ -9,7 +9,7 @@ class SourceFile(object):
 
     def build_ast(self):
         print(f"info: generating AST for {self.filename}")
-        result = subprocess.run(['clang', '-E', '-Xclang', '-ast-dump=json', '-nostdinc', '-fno-builtin', self.filename], stdout=subprocess.PIPE)
+        result = subprocess.run(['clang', '-E', '-Xclang', '-ast-dump=json', '-fno-builtin', '-nostdlib', self.filename], stdout=subprocess.PIPE)
         data = result.stdout.decode('utf-8')
         print(f"info: parsing AST for {self.filename}")
         return json.loads(data)

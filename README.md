@@ -1,11 +1,8 @@
 # BeefGen
 
-Generate Beef bindings for C libraries
+BeefGen uses the [Clang AST](https://clang.llvm.org/docs/IntroductionToTheClangAST.html) to automatically generate [Beef](https://www.beeflang.org/) bindings from C headers.
 
 **BeefGen is a work in progress and full of bugs. This probably isn't the repository you're looking for.**
-
-* Uses the [Clang AST](https://clang.llvm.org/docs/IntroductionToTheClangAST.html) to automatically generate [Beef](https://www.beeflang.org/) bindings from C source code.
-* Hooks to control function, parameter, and enum naming.
 
 ## Dependencies
 
